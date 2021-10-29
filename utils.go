@@ -259,7 +259,7 @@ func (configor *Configor) processTags(config interface{}, prefixes ...string) er
 			envNames = append(envNames, strings.Join(append(prefixes, fieldStruct.Name), "_"))                  // Configor_DB_Name
 			envNames = append(envNames, strings.ToUpper(strings.Join(append(prefixes, fieldStruct.Name), "_"))) // CONFIGOR_DB_NAME
 		} else {
-			envNames = []string{envName}
+			envNames = append(envNames, envName, strings.ToUpper(envName)) // Name, NAME
 		}
 
 		if configor.Config.Verbose {
